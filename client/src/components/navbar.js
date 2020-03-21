@@ -8,7 +8,7 @@ export default class Navbar extends Component {
                 <div className="container">
                 <Link to="/" className="navbar-brand">ExerTracker</Link>
 
-                <div className="collapse navbar-collapse">
+                <div className="navbar-collapse">
 
                     <ul className="navbar-nav mr-auto">
 
