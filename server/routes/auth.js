@@ -3,7 +3,7 @@ let AuthUser = require('../models/auth_user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-
+const auth = require('../middleware/auth');
 // Login route
 router.route('/login').post((req, res) => {
 
@@ -137,6 +137,15 @@ router.route('/register').post((req, res) => {
             });
         }); 
 
+});
+
+// get user data by jwt 
+router.get('/get_user_data', auth, (req, res) => {
+    AuthUser.findById(req.user.id)
+        .select('-password')
+        .then(user => {
+            res.json(user);
+        });
 });
 
 module.exports = router;

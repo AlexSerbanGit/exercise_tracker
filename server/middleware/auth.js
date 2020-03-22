@@ -1,5 +1,5 @@
 require('dotenv').config();
-const jwt = process.env.jwtSecret;
+const jwt = require('jsonwebtoken');
 
 function auth(req, res, next) {
 
@@ -23,8 +23,9 @@ function auth(req, res, next) {
         next();
 
     } catch(e) {
+        // throw e;
         res.status(400).json({
-            msg: 'Token is not valid',
+            msg: e,
         });
     }
 
