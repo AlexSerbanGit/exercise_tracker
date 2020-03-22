@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class UsersList extends Component {
     
@@ -19,6 +20,9 @@ export default class UsersList extends Component {
 
         axios.get('http://localhost:5000/users')
             .then(res => {
+                console.log("mounted");
+
+                // console.log("DADADA");
                 this.setState({
                     users: res.data,
                 });
@@ -46,7 +50,7 @@ export default class UsersList extends Component {
         return this.state.users.map(user => {
             return <div className="alert alert-info">{user.username}
                 <div className="float-right"> 
-                    <button style={{ marginTop: -7, marginRight: 5 }} className="btn btn-warning">Edit</button>
+                    <Link to={"/edit_user/" + user._id} style={{ marginTop: -7, marginRight: 5 }} className="btn btn-warning">Edit</Link>
                     <button style={{ marginTop: -7 }} onClick={ () => this.deleteUser(user._id) } className="btn btn-danger">Delete</button>
                 </div>
             </div>
@@ -58,12 +62,7 @@ export default class UsersList extends Component {
         return (
             <div className="container">
                 <h3>Users list</h3>
-                {/* <ul> */}
-                    { this.usersList() }
-                    {/* <li>
-                        da
-                    </li> */}
-                {/* </ul> */}
+                { this.usersList() }
             </div>
         )
     }
