@@ -14,6 +14,14 @@ export default class CreateUser extends Component {
         }
     }
 
+
+    componentDidMount() {
+
+        const token = localStorage.getItem('x-auth-token');
+        axios.defaults.headers.common['x-auth-token'] = token;
+
+    }
+
     onChangeUsername(e) {
         this.setState({
             username: e.target.value,

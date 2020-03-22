@@ -18,6 +18,9 @@ export default class UsersList extends Component {
 
     componentDidMount() {
 
+        const token = localStorage.getItem('x-auth-token');
+        axios.defaults.headers.common['x-auth-token'] = token;
+
         axios.get('http://localhost:5000/users')
             .then(res => {
                 console.log("mounted");

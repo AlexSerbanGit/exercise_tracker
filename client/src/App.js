@@ -9,6 +9,9 @@ import CreateExercise from './components/create_exercise';
 import CreateUser from './components/create_user';  
 import UsersList from './components/users_list';
 import EditUser from './components/edit_user';
+import Login from './components/auth/login';
+import Register from './components/auth/register';
+import Logout from './components/auth/logout';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
       <Route path="/edit/:id" component={EditExercise} />
       <Route path="/create" component={CreateExercise} />
       <Route path="/user" component={CreateUser} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route path="/logout" component={Logout} />
     </Router>
    
   );

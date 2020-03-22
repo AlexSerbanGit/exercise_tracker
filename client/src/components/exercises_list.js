@@ -30,6 +30,13 @@ export default class ExercisesList extends Component {
 
     componentDidMount() {
 
+        // no auth token 
+        if(!localStorage.getItem('x-auth-token')){
+            this.props.history.push('/login');
+        }
+        const token = localStorage.getItem('x-auth-token');
+        axios.defaults.headers.common['x-auth-token'] = token;
+
         axios.get('http://localhost:5000/exercises')
             .then(response => {
                 this.setState({

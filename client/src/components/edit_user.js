@@ -15,6 +15,10 @@ export default class CreateUser extends Component {
     }
 
     componentDidMount() {
+
+        const token = localStorage.getItem('x-auth-token');
+        axios.defaults.headers.common['x-auth-token'] = token;
+
         const id = this.props.match.params.id;
         console.log(id);
 
@@ -52,7 +56,6 @@ export default class CreateUser extends Component {
             });    
 
             this.forceUpdate();
-
             this.props.history.push('/users');
 
             })

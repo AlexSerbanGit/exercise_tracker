@@ -25,6 +25,10 @@ export default class CreateExercise extends Component {
     }
 
     componentDidMount() {
+
+        const token = localStorage.getItem('x-auth-token');
+        axios.defaults.headers.common['x-auth-token'] = token;
+
         // this.setState({
         //     users: ['Test user'],
         //     username: 'text user',
