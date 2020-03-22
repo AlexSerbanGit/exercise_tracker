@@ -18,6 +18,14 @@ router.route('/add_user').post((req, res) => {
         .catch(err => res.status(400).json('Error: '+err));
 });
 
+router.route('/delete_user/:id').get((req, res) => {
+    
+    User.findByIdAndDelete(req.params.id)
+        .then(() => res.json('User deleted!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+
+});
+
 router.route('/exercises').get((req, res) => {
     Exercise.find()
         .then(exercises => res.json(exercises))

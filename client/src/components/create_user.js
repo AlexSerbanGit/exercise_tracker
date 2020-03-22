@@ -37,8 +37,9 @@ export default class CreateUser extends Component {
             username: ''
         });
 
-        // window.location = "/";
-        this.props.history.push('/');
+        // window.location = "/users";
+        this.forceUpdate();
+        this.props.history.push('/users');
     }
 
     render() {
