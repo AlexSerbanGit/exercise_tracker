@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-var bodyParser = require('body-parser')
+// var bodyParser = require('body-parser')
 
 require('dotenv').config();
 
@@ -30,8 +30,12 @@ mongoose.connection.once('open', () => {
 const router = require('./routes/router');
 const usersRouter = require('./routes/users');
 
+// login and register
+const authRouter = require('./routes/auth');
+
 app.use('/', router);
 app.use('/', usersRouter);
+app.use('/', authRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
